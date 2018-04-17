@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-amap"
+    version="2.0.0">
+    <name>AmapLocation</name>
+    <author>cool1024</author>
+    <license>Apache 2.0 License</license>
+    <engines>
+        <engine name="cordova" version=">=3.4.0" />
+    </engines>
+    <js-module src="plugin.js" name="AMap">
+        <clobbers target="AMap" />
+    </js-module>
+    <preference name="API_KEY" />
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AMapPlugin">
+                <param name="android-package" value="com.amap.AMapPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <!-- 这个权限用于进行网络定位-->
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+            <!-- 这个权限用于访问GPS定位-->
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+            <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+            <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+            <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+            <!-- 用于读取手机当前的状态-->
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+            <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+            <!-- 访问网络，网络定位需要上网-->
+            <uses-permission android:name="android.permission.INTERNET" />
+            <!-- SD卡读取权限，用户写入离线定位数据-->
+            <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="$API_KEY"/>
+            <service android:name="com.amap.api.location.APSService"></service>
+        </config-file>
+        <source-file src="src/AMapPlugin.java" target-dir="src/com/amap" />
+        <source-file src="libs/AMap_Location_V3.8.0_20180201.jar" target-dir="libs" />
+    </platform>
+</plugin>
