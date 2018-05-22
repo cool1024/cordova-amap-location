@@ -50,6 +50,9 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
         try {
             location.put("Latitude", aMapLocation.getLatitude());
             location.put("Longitude", String.valueOf(aMapLocation.getLongitude()));
+            location.put("Province", String.valueOf(aMapLocation.getProvince()));
+            location.put("City", String.valueOf(aMapLocation.getCity()));
+            location.put("District", String.valueOf(aMapLocation.getDistrict()));
             location.put("Address", String.valueOf(aMapLocation.getAddress()));
         } catch (JSONException e) {
             this.callbackContext.error("LOCATION MESSAGE ERROR -- JSON PUT ERROR");
@@ -87,6 +90,7 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
         // 判断是否需要关闭定位
         if (this.mLocationClient != null && this.mLocationClient.isStarted()) {
             this.mLocationClient.stopLocation();
+            this.mLocationClient = null;
         }
     }
 

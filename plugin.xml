@@ -13,6 +13,7 @@
         <clobbers target="AMap" />
     </js-module>
     <preference name="API_KEY" />
+    <preference name="IOS_KEY" />
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -48,5 +49,34 @@
         </config-file>
         <source-file src="src/AMapPlugin.java" target-dir="src/com/amap" />
         <source-file src="libs/AMap_Location_V3.8.0_20180201.jar" target-dir="libs" />
+    </platform>
+    <!-- iOS -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AMapPlugin">
+                <param name="ios-package" value="AMapPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="AMapAppKey">
+          <string>$IOS_KEY</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+            <string>允许获取位置信息</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>允许获取位置信息</string>
+        </config-file>
+        <framework src="libs/AMapFoundationKit.framework"  custom="true"/>
+        <framework src="libs/AMapLocationKit.framework"  custom="true"/>
+        <framework src="JavaScriptcore.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="CoreLocation.framework" />
+        <framework src="Security.framework" />
+        <framework src="libz.tbd" />
+        <framework src="libc++.tbd" />
+        <framework src="libstdc++.6.0.9.tbd" />
+        <header-file src="src/AMapPlugin.h" />
+        <source-file src="src/AMapPlugin.m" />
     </platform>
 </plugin>
