@@ -1,5 +1,5 @@
 //
-//  RocordPlugin.h
+//  AMapPlugin.h
 //  FirstObj
 //
 //  Created by anasit on 2018/5/12.
@@ -7,14 +7,17 @@
 //
 
 #import <Cordova/CDVPlugin.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface RecordPlugin : CDVPlugin
+@interface AMapPlugin : CDVPlugin
 {
 }
 
-- (void)startRecord:(CDVInvokedUrlCommand *)command;
-- (void)stopRecord:(CDVInvokedUrlCommand *)command;
-- (void)playRecord:(CDVInvokedUrlCommand *)command;
-- (void)stopPlay:(CDVInvokedUrlCommand *)command;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
+
+- (void)getMyLocation:(CDVInvokedUrlCommand*)command;
+
+- (void)stopMyLocation:(CDVInvokedUrlCommand*)command;
 
 @end
