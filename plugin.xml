@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-plugin-amap"
-    version="2.0.0">
+    version="0.0.1">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>

@@ -16,7 +16,10 @@
     NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
     [AMapServices sharedServices].apiKey = [infoDict objectForKey:@"AMapAppKey"];
     self.locationManager = [[AMapLocationManager alloc] init];
+    // 一次还不错的定位
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    // 高精度
+    // [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     self.locationManager.delegate = self.appDelegate;
     self.locationManager.locationTimeout =10;
     self.locationManager.reGeocodeTimeout = 10;
@@ -55,12 +58,8 @@
                                     @"Longitude": [NSNumber numberWithDouble:location.coordinate.longitude]};
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:point];
         }
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
-    
-
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success"];
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)stopMyLocation:(CDVInvokedUrlCommand *)command{
