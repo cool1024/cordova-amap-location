@@ -1,6 +1,7 @@
 {
-  "name": "plugins.baidu-location",
-  "version": "1.0.0",
-  "description": "",
-  "dependencies": {}
+    "name": "cordova-amap-mylocation",
+    "version": "0.0.1",
+    "author": "cool1024",
+    "description": "a simple cordova plugin for amap",
+    "dependencies": {}
 }
