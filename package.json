@@ -1,6 +1,6 @@
 {
     "name": "cordova-amap-mylocation",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": "cool1024",
     "description": "a simple cordova plugin for amap",
     "dependencies": {},

@@ -21,7 +21,6 @@
 window.AMap.getMyLocation(
     success=>{
         alert(JSON.stringify(success));
-        window.AMap.stopMyLocation(()=>alert('stop success'),()=>alert('stop error'));
     },
     error=>{
         alert(error);

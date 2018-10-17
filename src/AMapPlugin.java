@@ -48,24 +48,34 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
     }
 
     public void onLocationChanged(AMapLocation aMapLocation) {
-        JSONObject location = new JSONObject();
-        try {
-            location.put("Latitude", aMapLocation.getLatitude());
-            location.put("Longitude", String.valueOf(aMapLocation.getLongitude()));
-            location.put("Province", String.valueOf(aMapLocation.getProvince()));
-            location.put("City", String.valueOf(aMapLocation.getCity()));
-            location.put("District", String.valueOf(aMapLocation.getDistrict()));
-            location.put("Address", String.valueOf(aMapLocation.getAddress()));
-        } catch (JSONException e) {
-            this.callbackContext.error("LOCATION MESSAGE ERROR -- JSON PUT ERROR");
-            return;
+
+        if (aMapLocation != null) {
+            if (aMapLocation.getErrorCode() == 0) {
+
+                JSONObject location = new JSONObject();
+                try {
+                    location.put("Latitude", aMapLocation.getLatitude());
+                    location.put("Longitude", String.valueOf(aMapLocation.getLongitude()));
+                    location.put("Province", String.valueOf(aMapLocation.getProvince()));
+                    location.put("City", String.valueOf(aMapLocation.getCity()));
+                    location.put("District", String.valueOf(aMapLocation.getDistrict()));
+                    location.put("Address", String.valueOf(aMapLocation.getAddress()));
+                } catch (JSONException e) {
+                    this.callbackContext.error("LOCATION MESSAGE ERROR -- JSON PUT ERROR");
+                    return;
+                }
+
+                Log.d("LOCATION:", location.toString());
+
+                PluginResult result = new PluginResult(PluginResult.Status.OK, location);
+                result.setKeepCallback(true);
+                this.callbackContext.sendPluginResult(result);
+            }else {
+                this.callbackContext.error("定位失败"+ aMapLocation.getErrorCode() + ", errInfo:"
+                        + aMapLocation.getErrorInfo());
+            }
+            stopAmap();
         }
-
-        Log.d("LOCATION:", location.toString());
-
-        PluginResult result = new PluginResult(PluginResult.Status.OK, location);
-        result.setKeepCallback(true);
-        this.callbackContext.sendPluginResult(result);
     }
 
     public void initAMap() {
