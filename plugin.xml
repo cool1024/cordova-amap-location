@@ -2,15 +2,14 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-amap-mylocation"
-    version="0.0.1">
+    version="0.0.6">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>
     <engines>
-        <engine name="cordova-ios" version=">=4.0.0-dev"/>
-        <engine name="apple-ios" version=">=9.0"/>
-        <engine name="cordova-android" version=">=6.4.0"/>
-	</engines>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=6.3.0" />
+    </engines>
     <js-module src="plugin.js" name="AMap">
         <clobbers target="AMap" />
     </js-module>
@@ -18,7 +17,7 @@
     <preference name="IOS_KEY" />
     <!-- android -->
     <platform name="android">
-        <config-file target="config.xml" parent="/*">
+        <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AMapPlugin">
                 <param name="android-package" value="com.amap.AMapPlugin" />
             </feature>

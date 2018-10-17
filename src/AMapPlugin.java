@@ -1,5 +1,8 @@
 package com.amap;
 
+import android.content.Intent;
+import android.location.LocationManager;
+import android.provider.Settings;
 import android.util.Log;
 
 import org.apache.cordova.CordovaPlugin;
@@ -19,8 +22,6 @@ import android.content.Context;
 import com.amap.api.location.AMapLocationClient;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
 
@@ -35,6 +36,7 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
         this.callbackContext = callbackContext;
 
         if (action.equals("getMyLocation")) {
+            initGPS();
             this.initAMap();
         } else if (action.equals("stopMyLocation")) {
             this.stopAmap();
@@ -72,7 +74,10 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
         if (this.mLocationClient == null) {
             AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
             mLocationOption.setNeedAddress(true);
-            mLocationOption.setInterval(4000);
+            // 单次定位
+            mLocationOption.setOnceLocation(true);
+            // 4秒获取一次定位
+            // mLocationOption.setInterval(4000);
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             this.mLocationClient = new AMapLocationClient(mContext);
             this.mLocationClient.setLocationOption(mLocationOption);
@@ -82,6 +87,19 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
         // 判断是否需要开启定位
         if (!this.mLocationClient.isStarted()) {
             this.mLocationClient.startLocation();
+        }
+    }
+
+    /* 检查gps状态并引导用户打开gps */
+
+    private void initGPS() {
+        LocationManager locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        // 判断GPS模块是否开启，如果没有则跳转至设置开启界面，设置完毕后返回到当前页面
+        if (!locationManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)) {
+            // 转到手机设置界面，用户设置GPS
+            Intent intent = new Intent(
+                    Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            mContext.startActivity(intent);
         }
     }
 
