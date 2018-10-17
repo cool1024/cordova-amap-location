@@ -6,7 +6,7 @@
     * 使用android studio -> Build -> Generate Signed Bundle/Apk... 可以生成一个签名文件
     * 查看安全码sha1： keytool -v -list -keystore [keystore文件路径]
 
-## 安装命令
+## 安装命令
 `cordova plugin add cordova-amap-mylocation --variable API_KEY=安卓平台的key --variable IOS_KEY=苹果的key`
 
 ### 安装例子命令
