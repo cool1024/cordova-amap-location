@@ -1,6 +1,6 @@
 var exec = require('cordova/exec');
 
-var AMap = {
+var CAMap = {
     getMyLocation: function (success, error) {
         exec(success, error, 'AMapPlugin', 'getMyLocation', []);
     },
@@ -9,4 +9,4 @@ var AMap = {
     }
 };
 
-module.exports = AMap;
+module.exports = CAMap;

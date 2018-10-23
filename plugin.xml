@@ -10,8 +10,8 @@
         <engine name="cordova" version=">=7.1.0"/>
         <engine name="cordova-android" version=">=6.3.0" />
     </engines>
-    <js-module src="plugin.js" name="AMap">
-        <clobbers target="AMap" />
+    <js-module src="plugin.js" name="CAMap">
+        <clobbers target="CAMap" />
     </js-module>
     <preference name="API_KEY" />
     <preference name="IOS_KEY" />
