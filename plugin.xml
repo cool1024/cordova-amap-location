@@ -76,7 +76,7 @@
         <framework src="Security.framework" />
         <framework src="libz.tbd" />
         <framework src="libc++.tbd" />
-        <framework src="libstdc++.6.0.9.tbd" />
+        <!-- <framework src="libstdc++.6.0.9.tbd" /> -->
         <header-file src="src/AMapPlugin.h" />
         <source-file src="src/AMapPlugin.m" />
     </platform>
