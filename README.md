@@ -18,7 +18,7 @@
 
 ### 使用方法
 ```typescript
-window.AMap.getMyLocation(
+window.CAMap.getMyLocation(
     success=>{
         alert(JSON.stringify(success));
     },
