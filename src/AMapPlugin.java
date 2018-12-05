@@ -109,6 +109,7 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
             // 转到手机设置界面，用户设置GPS
             Intent intent = new Intent(
                     Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
             mContext.startActivity(intent);
         }
     }
