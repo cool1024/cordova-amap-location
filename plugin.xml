@@ -49,7 +49,7 @@
             <service android:name="com.amap.api.location.APSService"></service>
         </config-file>
         <source-file src="src/AMapPlugin.java" target-dir="src/com/amap" />
-        <source-file src="libs/AMap_Location_V3.8.0_20180201.jar" target-dir="libs" />
+        <source-file src="libs/AMap_Location_V4.4.0_20181122.jar" target-dir="libs" />
     </platform>
     <!-- iOS -->
     <platform name="ios">
