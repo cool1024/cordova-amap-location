@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jan 22 15:42:54 CST 2019
+#Tue Jan 22 15:47:23 CST 2019
 25.file=/Users/anasit/Documents/Git/cordova-amap-location/example/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_/res/drawable-port-xhdpi-v4/screen.png
 25.base=/Users/anasit/Documents/Git/cordova-amap-location/example/platforms/android/app/build/intermediates/res/debug/resources-debug.ap_
 22.set=ASSET

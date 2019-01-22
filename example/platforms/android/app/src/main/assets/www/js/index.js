@@ -10,7 +10,7 @@ function getLocation() {
     // 检查GPS状态
     CAMap.checkGPS(function (isOpen) {
 
-        alert("当前GPS状态:" + isOpen === 1 ? '开启' : '关闭');
+        alert("当前GPS状态:" + (isOpen === 1 ? '开启' : '关闭'));
 
         // 如果没有打开，那么提示用户要打开
         if (isOpen !== 1) {
