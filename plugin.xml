@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-amap-mylocation"
-    version="0.0.7">
+    version="0.0.13">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>
@@ -13,7 +13,7 @@
     <js-module src="plugin.js" name="CAMap">
         <clobbers target="CAMap" />
     </js-module>
-    <preference name="API_KEY" />
+    <preference name="ANDROID_KEY" />
     <preference name="IOS_KEY" />
     <!-- android -->
     <platform name="android">
@@ -45,11 +45,11 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data
                 android:name="com.amap.api.v2.apikey"
-                android:value="$API_KEY"/>
+                android:value="$ANDROID_KEY"/>
             <service android:name="com.amap.api.location.APSService"></service>
         </config-file>
         <source-file src="src/AMapPlugin.java" target-dir="src/com/amap" />
-        <source-file src="libs/AMap_Location_V4.4.0_20181122.jar" target-dir="libs" />
+        <lib-file src="libs/AMap_Location_V4.4.0_20181122.jar"/>
     </platform>
     <!-- iOS -->
     <platform name="ios">
