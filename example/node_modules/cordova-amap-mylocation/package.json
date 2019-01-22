@@ -1,0 +1,50 @@
+{
+  "_from": "cordova-amap-mylocation",
+  "_id": "cordova-amap-mylocation@0.0.13",
+  "_inBundle": false,
+  "_integrity": "sha512-iL6AplKMYGpnDTBzZSSvVsAgVNu0dLLryiSp1Mo+rQKwchx6ea7WtEHkR4Xrw8FCDTZf9yvCc72uyWBHLpt+dQ==",
+  "_location": "/cordova-amap-mylocation",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-amap-mylocation",
+    "name": "cordova-amap-mylocation",
+    "escapedName": "cordova-amap-mylocation",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-amap-mylocation/-/cordova-amap-mylocation-0.0.13.tgz",
+  "_shasum": "77d6aea311cac651fa251f1a4ded15bfc2a06e96",
+  "_spec": "cordova-amap-mylocation",
+  "_where": "/Users/anasit/Documents/Git/cordova-amap-location/example",
+  "author": {
+    "name": "cool1024"
+  },
+  "bugs": {
+    "url": "https://github.com/BeauitfullXiaoJian/cordova-amap-location/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-amap-mylocation",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "a simple cordova plugin for amap",
+  "homepage": "https://github.com/BeauitfullXiaoJian/cordova-amap-location#readme",
+  "name": "cordova-amap-mylocation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeauitfullXiaoJian/cordova-amap-location.git"
+  },
+  "version": "0.0.13"
+}

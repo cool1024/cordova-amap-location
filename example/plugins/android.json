@@ -1,0 +1,20 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-amap-mylocation": {
+      "ANDROID_KEY": "c40acfe3d1a57f5ef0307e031c42d582",
+      "IOS_KEY": "f2f5baa023acdfc4d3aca9f88db2bdde",
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {}
+}
