@@ -1,0 +1,25 @@
+{
+    "name": "cordova-amap-mylocation",
+    "version": "0.0.17",
+    "author": "cool1024",
+    "description": "a simple cordova plugin for amap",
+    "dependencies": {
+        "adm-zip": "^0.4.13",
+        "npmlog": "^4.0.0",
+        "request": "^2.88.0"
+    },
+    "scripts": {
+        "postinstall": "node download.js"
+    },
+    "cordova": {
+        "id": "cordova-amap-mylocation",
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BeauitfullXiaoJian/cordova-amap-location"
+    }
+}
