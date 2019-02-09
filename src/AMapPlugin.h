@@ -20,4 +20,6 @@
 
 - (void)stopMyLocation:(CDVInvokedUrlCommand*)command;
 
+- (void)showMap:(CDVInvokedUrlCommand *)command;
+
 @end

@@ -67,4 +67,11 @@
      [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void)showMap:(CDVInvokedUrlCommand *)command{
+    UIStoryboard *mapStoryboard = [UIStoryboard storyboardWithName:@"MapStoryboard" bundle:nil];
+    UIViewController *mapViewController = [mapStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    [self.viewController presentViewController:mapViewController animated:YES completion:nil];
+}
+
+
 @end
