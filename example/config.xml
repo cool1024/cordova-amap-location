@@ -28,4 +28,5 @@
         <variable name="IOS_KEY" value="6c92e294244e5ea9a8b9ad134e401417" />
     </plugin>
     <engine name="ios" spec="^4.5.5" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

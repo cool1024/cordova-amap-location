@@ -7,7 +7,10 @@ import android.util.Log;
 
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
@@ -27,6 +30,7 @@ public class MapActivity extends Activity implements
     private static final String TAG = "MapActivity";
     private MapView mMapView;
     private AMap mAMap;
+    private boolean mNeedMoveToCenter = Boolean.TRUE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +76,8 @@ public class MapActivity extends Activity implements
             LatLonPoint point = item.getLatLonPoint();
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(new LatLng(point.getLatitude(), point.getLongitude()));
-            markerOptions.title("北京");
-            markerOptions.snippet("DefaultMarker");
+            markerOptions.title(item.getTitle());
+            markerOptions.snippet(item.getSnippet());
             mAMap.addMarker(markerOptions);
         }
     }
@@ -85,6 +89,13 @@ public class MapActivity extends Activity implements
 
     @Override
     public void onMyLocationChange(Location location) {
+        if (mNeedMoveToCenter) {
+            Log.d(TAG, "移动相机");
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(location.getLatitude(), location.getLongitude()), 14);
+            mAMap.animateCamera(update);
+            mNeedMoveToCenter = Boolean.FALSE;
+        }
         initSearch(new LatLonPoint(location.getLatitude(), location.getLongitude()));
     }
 
@@ -93,13 +104,13 @@ public class MapActivity extends Activity implements
         query.setPageSize(100);
         PoiSearch poiSearch = new PoiSearch(this, query);
         poiSearch.setOnPoiSearchListener(this);
-        poiSearch.setBound(new PoiSearch.SearchBound(point, 1000));
+        poiSearch.setBound(new PoiSearch.SearchBound(point, 3000));
         poiSearch.searchPOIAsyn();
     }
 
     private void setSelfPoint() {
         MyLocationStyle locationStyle = new MyLocationStyle();
-        locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);
+        locationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
         locationStyle.interval(10000);
         mAMap.setMyLocationStyle(locationStyle);
         mAMap.setOnMyLocationChangeListener(this);
