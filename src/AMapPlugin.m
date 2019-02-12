@@ -70,7 +70,13 @@
 - (void)showMap:(CDVInvokedUrlCommand *)command{
     UIStoryboard *mapStoryboard = [UIStoryboard storyboardWithName:@"MapStoryboard" bundle:nil];
     UIViewController *mapViewController = [mapStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    NSLog(@"打开地图");
     [self.viewController presentViewController:mapViewController animated:YES completion:nil];
+}
+
+- (void)checkGPS:(CDVInvokedUrlCommand *)command{
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:1];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 

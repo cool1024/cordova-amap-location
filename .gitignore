@@ -1,4 +1,5 @@
 node_modules
 libs
+libs.zip
 example/platforms/*
 example/plugins/*

@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-amap-mylocation"
-    version="0.0.17">
+    version="0.0.20">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>
@@ -80,7 +80,7 @@
         <framework src="libs/AMapLocationKit.framework"  custom="true"/> 
         <framework src="libs/AMapSearchKit.framework"  custom="true"/> 
         <framework src="libs/MAMapKit.framework"  custom="true"/> 
-        <framework src=" GLKit.framework" />
+        <framework src="GLKit.framework" />
         <framework src="JavaScriptcore.framework" />
         <framework src="SystemConfiguration.framework" />
         <framework src="CoreTelephony.framework" />

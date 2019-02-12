@@ -22,4 +22,7 @@
 
 - (void)showMap:(CDVInvokedUrlCommand *)command;
 
+// 检查GPS是否开启,IOS无需此方法，默认为开启
+- (void)checkGPS:(CDVInvokedUrlCommand *)command;
+
 @end
