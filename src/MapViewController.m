@@ -29,7 +29,7 @@
     [AMapServices sharedServices].enableHTTPS = YES;
     _mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     [_mapContainer addSubview:_mapView];
-    [_mapView setZoomLevel:16 animated:YES];
+    [_mapView setZoomLevel:12 animated:YES];
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
     _mapView.delegate = self;
