@@ -13,8 +13,8 @@ var CAMap = {
     openGPS: function (success, error) {
         exec(success, error, 'AMapPlugin', 'openGPS', []);
     },
-    showMap: function () {
-        exec(null, null, 'AMapPlugin', 'showMap', []);
+    showMap: function (marks) {
+        exec(null, null, 'AMapPlugin', 'showMap', [marks]);
     },
     // 这个方法已经不需要了
     stopMyLocation: function (success, error) {

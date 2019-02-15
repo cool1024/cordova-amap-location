@@ -26,6 +26,9 @@ import com.amap.api.location.AMapLocationClient;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 
 public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
 
@@ -41,38 +44,40 @@ public class AMapPlugin extends CordovaPlugin implements AMapLocationListener {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
         this.callbackContext = callbackContext;
-        switch (action) {
-            case "_getMyLocation": {
-                this.initAMap();
-                break;
-            }
-            case "getMyLocation": {
-                initGPS();
-                this.initAMap();
-                break;
-            }
-            case "checkGPS": {
-                callbackContext.success(isGPSOpen() ? 1 : 0);
-                break;
-            }
-            case "openGPS": {
-                openGPS();
-                break;
-            }
-            case "stopMyLocation": {
-                this.stopAmap();
-                this.callbackContext.success();
-                break;
-            }
-            case "showMap": {
+        if (action.equals("_getMyLocation")) {
+            this.initAMap();
+        } else if (action.equals("getMyLocation")) {
+            initGPS();
+            this.initAMap();
+        } else if (action.equals("checkGPS")) {
+            callbackContext.success(isGPSOpen() ? 1 : 0);
+        } else if (action.equals("openGPS")) {
+            openGPS();
+        } else if (action.equals("stopMyLocation")) {
+            stopAmap();
+        } else if (action.equals("showMap")) {
+            try {
+                JSONArray jsonArray = args.getJSONArray(0);
+                Log.d(TAG, "标记个数" + jsonArray.length());
+                ArrayList<MapActivity.Mark> marks = new ArrayList<MapActivity.Mark>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    MapActivity.Mark mark = new MapActivity.Mark();
+                    mark.setTitle(object.getString("title"));
+                    mark.setSnippet(object.getString("snippet"));
+                    mark.setLn(object.getDouble("ln"));
+                    mark.setLt(object.getDouble("lt"));
+                    marks.add(mark);
+                }
                 Activity activity = cordova.getActivity();
                 Intent intent = new Intent(activity, MapActivity.class);
+                intent.putExtra("marks", (Serializable) marks);
                 cordova.getActivity().startActivity(intent);
-                break;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            default: {
-                callbackContext.error("ERROR ACTION");
-            }
+        } else {
+            callbackContext.error("ERROR ACTION");
         }
         return true;
     }

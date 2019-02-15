@@ -69,8 +69,8 @@
 
 - (void)showMap:(CDVInvokedUrlCommand *)command{
     UIStoryboard *mapStoryboard = [UIStoryboard storyboardWithName:@"MapStoryboard" bundle:nil];
-    UIViewController *mapViewController = [mapStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    NSLog(@"打开地图");
+    MapViewController *mapViewController = [mapStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    mapViewController.marks =[command.arguments objectAtIndex:0];
     [self.viewController presentViewController:mapViewController animated:YES completion:nil];
 }
 

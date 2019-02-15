@@ -9,6 +9,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import "MapViewController.h";
 
 @interface AMapPlugin : CDVPlugin
 {

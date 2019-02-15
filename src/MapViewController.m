@@ -19,6 +19,11 @@
 
 @implementation MapViewController
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [AMapServices sharedServices].enableHTTPS = YES;
@@ -29,6 +34,12 @@
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
     _mapView.delegate = self;
     _annotationa = [[NSMutableArray alloc] init];
+    
+    // 设置地图标记
+    [self setMarks];
+    
+    
+    // 设置标题，返回按钮
     _headerBar.title = @"附近的门店";
     _headerBar.leftBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(backAction)];
 }
@@ -76,7 +87,7 @@
         CLLocation *location = userLocation.location;
         NSLog(@"用户位置变化(%f,%f,%d)",location.coordinate.latitude,location.coordinate.longitude,updatingLocation);
         if(_annotationa.count==0){
-            [self doSearch:@"煌上煌" location:location];
+            // [self doSearch:@"煌上煌" location:location];
         }
     }
 }
@@ -101,6 +112,21 @@
         return annotationView;
     }
     return nil;
+}
+
+- (void)setMarks{
+    for(NSDictionary * mark in _marks){
+        NSString *title = [mark objectForKey:@"title"];
+        NSString *subtitle = [mark objectForKey:@"snippet"];
+        NSString *ln = [mark objectForKey:@"ln"];
+        NSString *lt = [mark objectForKey:@"lt"];
+        NSLog(@"地点名称：%@",title);
+        MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+        pointAnnotation.coordinate = CLLocationCoordinate2DMake(lt.doubleValue, ln.doubleValue);
+        pointAnnotation.title = title;
+        pointAnnotation.subtitle = subtitle;
+        [_mapView addAnnotation:pointAnnotation];
+    }
 }
 
 @end

@@ -1,6 +1,7 @@
 package com.amap;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,9 +20,10 @@ import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import io.cordova.hellocordova.R;
+import com.dobay.dudao.R;
 
 public class MapActivity extends Activity implements
         PoiSearch.OnPoiSearchListener,
@@ -31,16 +33,21 @@ public class MapActivity extends Activity implements
     private MapView mMapView;
     private AMap mAMap;
     private boolean mNeedMoveToCenter = Boolean.TRUE;
+    private ArrayList<Mark> mMarks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActionBar().hide();
         setContentView(R.layout.activity_map);
+        Intent intent = getIntent();
+        mMarks = (ArrayList<Mark>) intent.getSerializableExtra("marks");
         mMapView = (MapView) findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
         mAMap = mMapView.getMap();
         setSelfPoint();
+        Log.d(TAG, "标记个数" + mMarks.size());
+        setMarks();
     }
 
     @Override
@@ -96,7 +103,7 @@ public class MapActivity extends Activity implements
             mAMap.animateCamera(update);
             mNeedMoveToCenter = Boolean.FALSE;
         }
-        initSearch(new LatLonPoint(location.getLatitude(), location.getLongitude()));
+        // initSearch(new LatLonPoint(location.getLatitude(), location.getLongitude()));
     }
 
     private void initSearch(LatLonPoint point) {
@@ -116,5 +123,55 @@ public class MapActivity extends Activity implements
         mAMap.setOnMyLocationChangeListener(this);
         mAMap.getUiSettings().setMyLocationButtonEnabled(true);
         mAMap.setMyLocationEnabled(true);
+    }
+
+    private void setMarks() {
+        for (Mark mark : mMarks) {
+            MarkerOptions markerOptions = new MarkerOptions();
+            Log.d(TAG,"坐标"+mark.getLn());
+            markerOptions.position(new LatLng(mark.getLt(), mark.getLn()));
+            markerOptions.title(mark.getTitle());
+            markerOptions.snippet(mark.getSnippet());
+            mAMap.addMarker(markerOptions);
+        }
+    }
+
+    public static class Mark implements Serializable {
+        private String title;
+        private String snippet;
+        private Double ln;
+        private Double lt;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getSnippet() {
+            return snippet;
+        }
+
+        public void setSnippet(String snippet) {
+            this.snippet = snippet;
+        }
+
+        public Double getLn() {
+            return ln;
+        }
+
+        public void setLn(Double ln) {
+            this.ln = ln;
+        }
+
+        public Double getLt() {
+            return lt;
+        }
+
+        public void setLt(Double lt) {
+            this.lt = lt;
+        }
     }
 }

@@ -12,5 +12,5 @@
 
 @interface MapViewController : UIViewController
 
-
+@property NSArray *marks;
 @end

@@ -30,5 +30,12 @@ function getLocation() {
 }
 
 function openMap() {
-    CAMap.showMap();
+    CAMap.showMap([
+        {
+            title: '123213',
+            snippet: '323213',
+            ln: 12312.2312,
+            lt: 321321
+        }
+    ]);
 }
