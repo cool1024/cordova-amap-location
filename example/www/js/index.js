@@ -32,10 +32,10 @@ function getLocation() {
 function openMap() {
     CAMap.showMap([
         {
-            title: '我自己的地址',
-            snippet: '发的索科洛夫结束了对咖啡监考老师放假了打开',
-            ln: 115.9907500,
-            lt: 28.6671740
+            title: '123213',
+            snippet: '323213',
+            ln: 115.995391,
+            lt: 28.675095
         }
     ]);
 }

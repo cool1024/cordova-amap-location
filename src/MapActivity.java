@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 
 import com.amap.api.maps.AMap;
@@ -13,8 +14,16 @@ import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.AmapPageType;
+import com.amap.api.navi.INaviInfoCallback;
+import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
@@ -27,7 +36,8 @@ import com.dobay.dudao.R;
 
 public class MapActivity extends Activity implements
         PoiSearch.OnPoiSearchListener,
-        AMap.OnMyLocationChangeListener {
+        AMap.OnMyLocationChangeListener,
+        INaviInfoCallback {
 
     private static final String TAG = "MapActivity";
     private MapView mMapView;
@@ -45,9 +55,20 @@ public class MapActivity extends Activity implements
         mMapView = (MapView) findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
         mAMap = mMapView.getMap();
+        mAMap.setOnInfoWindowClickListener(new AMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Poi end = new Poi(marker.getTitle(), new LatLng(marker.getPosition().latitude, marker.getPosition().longitude), "");
+                showNavigation(end);
+            }
+        });
         setSelfPoint();
         Log.d(TAG, "标记个数" + mMarks.size());
         setMarks();
+    }
+
+    private void showNavigation(Poi end) {
+        AmapNaviPage.getInstance().showRouteActivity(this, new AmapNaviParams(null, null, end, AmapNaviType.DRIVER, AmapPageType.NAVI), this);
     }
 
     @Override
@@ -128,12 +149,82 @@ public class MapActivity extends Activity implements
     private void setMarks() {
         for (Mark mark : mMarks) {
             MarkerOptions markerOptions = new MarkerOptions();
-            Log.d(TAG,"坐标"+mark.getLn());
+            Log.d(TAG, "坐标" + mark.getLn() + "," + mark.getLt());
             markerOptions.position(new LatLng(mark.getLt(), mark.getLn()));
             markerOptions.title(mark.getTitle());
             markerOptions.snippet(mark.getSnippet());
             mAMap.addMarker(markerOptions);
         }
+    }
+
+    @Override
+    public void onInitNaviFailure() {
+
+    }
+
+    @Override
+    public void onGetNavigationText(String s) {
+
+    }
+
+    @Override
+    public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+
+    }
+
+    @Override
+    public void onArriveDestination(boolean b) {
+
+    }
+
+    @Override
+    public void onStartNavi(int i) {
+
+    }
+
+    @Override
+    public void onCalculateRouteSuccess(int[] ints) {
+
+    }
+
+    @Override
+    public void onCalculateRouteFailure(int i) {
+
+    }
+
+    @Override
+    public void onStopSpeaking() {
+
+    }
+
+    @Override
+    public void onReCalculateRoute(int i) {
+
+    }
+
+    @Override
+    public void onExitPage(int i) {
+
+    }
+
+    @Override
+    public void onStrategyChanged(int i) {
+
+    }
+
+    @Override
+    public View getCustomNaviBottomView() {
+        return null;
+    }
+
+    @Override
+    public View getCustomNaviView() {
+        return null;
+    }
+
+    @Override
+    public void onArrivedWayPoint(int i) {
+
     }
 
     public static class Mark implements Serializable {

@@ -1,5 +1,5 @@
 # 高德地图Cordova插件
-
+import com.dobay.dudao.R;
 ## 相关说明
 1. 申请高德地图应用与key [高德开放平台](https://lbs.amap.com)
 2. android apk签名/生成签名 [参考文档](https://lbs.amap.com/faq/top/hot-questions/249)

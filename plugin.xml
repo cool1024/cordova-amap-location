@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-amap-mylocation"
-    version="0.0.23">
+    version="0.0.24">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>
@@ -48,6 +48,9 @@
                 android:value="$ANDROID_KEY"/>
             <service android:name="com.amap.api.location.APSService"></service>
             <activity android:name="com.amap.MapActivity"></activity>
+            <activity android:name="com.amap.api.navi.AmapRouteActivity"
+                android:theme="@android:style/Theme.NoTitleBar"
+                android:configChanges="orientation|keyboardHidden|screenSize" />
         </config-file>
         <source-file src="src/AMapPlugin.java" target-dir="src/com/amap" />
         <source-file src="src/MapActivity.java" target-dir="src/com/amap" />
