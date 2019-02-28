@@ -32,8 +32,8 @@ function getLocation() {
 function openMap() {
     CAMap.showMap([
         {
-            title: '123213',
-            snippet: '323213',
+            title: '紫阳明珠',
+            snippet: '江西省南昌市青山湖区创新二路靠近紫阳明珠',
             ln: 115.995391,
             lt: 28.675095
         }

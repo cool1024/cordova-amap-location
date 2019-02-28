@@ -23,9 +23,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="cordova-amap-mylocation" spec="0.0.23">
-        <variable name="ANDROID_KEY" value="c40acfe3d1a57f5ef0307e031c42d582" />
-        <variable name="IOS_KEY" value="6c92e294244e5ea9a8b9ad134e401417" />
-    </plugin>
-    <engine name="android" spec="^7.0.0" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>

@@ -10,20 +10,16 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
-        "cordova-amap-mylocation": "0.0.23",
-        "cordova-android": "^7.0.0",
+        "cordova-amap-mylocation": "0.0.25",
+        "cordova-ios": "^4.5.5",
         "cordova-plugin-whitelist": "^1.3.3"
     },
     "cordova": {
         "plugins": {
-            "cordova-amap-mylocation": {
-                "ANDROID_KEY": "c40acfe3d1a57f5ef0307e031c42d582",
-                "IOS_KEY": "6c92e294244e5ea9a8b9ad134e401417"
-            },
             "cordova-plugin-whitelist": {}
         },
         "platforms": [
-            "android"
+            "ios"
         ]
     }
 }

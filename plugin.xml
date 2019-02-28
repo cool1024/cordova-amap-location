@@ -2,7 +2,7 @@
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-amap-mylocation"
-    version="0.0.24">
+    version="0.0.26">
     <name>AmapLocation</name>
     <author>cool1024</author>
     <license>Apache 2.0 License</license>
@@ -83,6 +83,7 @@
         <framework src="libs/AMapLocationKit.framework"  custom="true"/> 
         <framework src="libs/AMapSearchKit.framework"  custom="true"/> 
         <framework src="libs/MAMapKit.framework"  custom="true"/> 
+        <framework src="libs/AMapNaviKit.framework"  custom="true"/> 
         <framework src="GLKit.framework" />
         <framework src="JavaScriptcore.framework" />
         <framework src="SystemConfiguration.framework" />
@@ -96,6 +97,10 @@
         <source-file src="src/AMapPlugin.m" />
         <header-file src="src/MapViewController.h" />
         <source-file src="src/MapViewController.m" />
+        <header-file src="src/CustomAnnotationView.h" />
+        <source-file src="src/CustomAnnotationView.m" />
+        <header-file src="src/CustomCalloutView.h" />
+        <source-file src="src/CustomCalloutView.m" />
         <resource-file src="src/MapStoryboard.storyboard" />
     </platform>
 </plugin>
