@@ -97,4 +97,4 @@ function getLocation() {
 ![IOS预览图](preview.png)
 > 注意：IOS地图需要添加资源AMap.bundle，左侧目录中选中工程名，在右键菜单中选择Add Files to “工程名”…，从MAMapKit.framework中选择AMap.bundle文件，并勾选“Copy items if needed”复选框，单击“Add”按钮，将资源文件添加到工程中。（MAMapKit.framework已经在项目目录中了，比如example/ios/HelloCordova/Plugins/cordova-amap-mylocation/MAMapKit.framework）[参考文档](https://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
 2. 导航(点击地图上的标记会打开导航)
-> > 注意：IOS导航需要添加资源AMapNavi.bundle，左侧目录中选中工程名，在右键菜单中选择Add Files to “工程名”…，从AMapNaviKit.framework中选择AMapNavi.bundle文件，并勾选“Copy items if needed”复选框，单击“Add”按钮，将资源文件添加到工程中。（AMapNaviKit.framework已经在项目目录中了，比如example/ios/HelloCordova/Plugins/cordova-amap-mylocation/AMapNaviKit.framework）[参考文档](https://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
+> 注意：IOS导航需要添加资源AMapNavi.bundle，左侧目录中选中工程名，在右键菜单中选择Add Files to “工程名”…，从AMapNaviKit.framework中选择AMapNavi.bundle文件，并勾选“Copy items if needed”复选框，单击“Add”按钮，将资源文件添加到工程中。（AMapNaviKit.framework已经在项目目录中了，比如example/ios/HelloCordova/Plugins/cordova-amap-mylocation/AMapNaviKit.framework）[参考文档](https://lbs.amap.com/api/ios-sdk/guide/create-project/manual-configuration)
